@@ -33,10 +33,6 @@ SET(OSGEARTH_PATCH_VERSION 0)
 # Increment this each time the ABI changes
 SET(OSGEARTH_SOVERSION 135)
 
-# C++11 is required for osgEarth 3.x
-set_property(GLOBAL PROPERTY CXX_STANDARD 11)
-set_property(GLOBAL PROPERTY CXX_STANDARD_REQUIRED ON)
-
 # Assign a custom prefix if necessary.
 SET(OSGEARTH_PLUGIN_PREFIX "")
 
@@ -79,10 +75,6 @@ include_directories(${OSGEARTH_BUILDTIME_INCLUDE_DIR})
 
 # Third-party sources included in the osgEarth repo
 SET(OSGEARTH_EMBEDDED_THIRD_PARTY_DIR ${PROJECT_SOURCE_DIR}/src/third_party)
-
-# Ensure and configure C++11 compiler support.
-INCLUDE(CXX11)
-check_for_cxx11_compiler(CXX11_AVAILABLE)
 
 # Location of GLCORE headers if you are using GLCORE
 set(OSGEARTH_GLCORE_INCLUDE_DIR CACHE PATH "For OpenGL CORE Profile, location of the GLCORE header files")

@@ -205,11 +205,11 @@ CalloutManager::push(Callout* node, osgUtil::CullVisitor& nv)
     rec._matrix->makeTranslate(labelpos);
 
     // and update the leader line endpoints
-    if (anchor != _leaders->getVertex(rec._leaderLineIndex))
+    if (anchor != osg::Vec3d(_leaders->getVertex(rec._leaderLineIndex)))
     {
         _leaders->setVertex(rec._leaderLineIndex, anchor);
     }
-    if (labelpos != _leaders->getVertex(rec._leaderLineIndex + 1))
+    if (labelpos != osg::Vec3d(_leaders->getVertex(rec._leaderLineIndex + 1)))
     {
         _leaders->setVertex(rec._leaderLineIndex + 1, labelpos);
     }

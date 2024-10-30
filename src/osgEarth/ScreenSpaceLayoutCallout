@@ -282,11 +282,11 @@ namespace osgEarth { namespace Internal
             leaf->_modelview->makeTranslate(pos + alignment);
 
             // and update the leader line endpoints
-            if (element._anchor != local._leaders->getVertex(element._leaderLineIndex))
+            if (element._anchor != osg::Vec3d(local._leaders->getVertex(element._leaderLineIndex)))
             {
                 local._leaders->setVertex(element._leaderLineIndex, element._anchor);
             }
-            if (pos != local._leaders->getVertex(element._leaderLineIndex + 1))
+            if (pos != osg::Vec3d(local._leaders->getVertex(element._leaderLineIndex + 1)))
             {
                 local._leaders->setVertex(element._leaderLineIndex + 1, pos);
             }
