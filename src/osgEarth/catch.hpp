@@ -4438,11 +4438,13 @@ namespace Clara {
 
         class OptBuilder : public ArgBuilder {
         public:
-            OptBuilder( Arg* arg ) : ArgBuilder( arg ) {}
-            OptBuilder( OptBuilder& other ) : ArgBuilder( other ) {}
+            OptBuilder(Arg* arg) : ArgBuilder(arg) {}
 
-            OptBuilder& operator[]( std::string const& optName ) {
-                addOptName( *ArgBuilder::m_arg, optName );
+            OptBuilder(const OptBuilder& other)
+                : ArgBuilder(other) {}
+
+            OptBuilder& operator[](std::string const& optName) {
+                addOptName(*ArgBuilder::m_arg, optName);
                 return *this;
             }
         };
@@ -8002,7 +8004,7 @@ namespace Catch {
     Section::~Section() {
         if( m_sectionIncluded ) {
             SectionEndInfo endInfo( m_info, m_assertions, m_timer.getElapsedSeconds() );
-            if( std::uncaught_exception() )
+            if( std::uncaught_exceptions() >= 0 )
                 getResultCapture().sectionEndedEarly( endInfo );
             else
                 getResultCapture().sectionEnded( endInfo );

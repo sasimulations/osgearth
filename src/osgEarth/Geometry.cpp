@@ -719,7 +719,7 @@ LineString::getSignedDistance2D(
     {
         seg._a.set((*this)[i].x(), (*this)[i].y(), 0);
         seg._b.set((*this)[i + 1].x(), (*this)[i + 1].y(), 0);
-        r = std::min(r, seg.squaredDistanceTo(a));
+        r = (std::min)(r, seg.squaredDistanceTo(a));
     }
 
     return sqrt(r);
@@ -823,7 +823,7 @@ Ring::getSignedDistance2D(
     {
         seg._a.set((*this)[i].x(), (*this)[i].y(), 0.0);
         seg._b.set((*this)[j].x(), (*this)[j].y(), 0.0);
-        r = std::min(r, seg.squaredDistanceTo(a));
+        r = (std::min)(r, seg.squaredDistanceTo(a));
     }
 
     r = sqrt(r);
@@ -947,7 +947,7 @@ Polygon::getSignedDistance2D(
     r = Ring::getSignedDistance2D(a);
 
     for (const auto& hole : _holes)
-        r = std::min(r, hole->getSignedDistance2D(a));
+        r = (std::min)(r, hole->getSignedDistance2D(a));
 
     return r;
 }
@@ -1083,7 +1083,7 @@ MultiGeometry::getSignedDistance2D(
     double r = DBL_MAX;
     for (const auto& part : _parts)
     {
-        r = std::min(part->getSignedDistance2D(a), r);
+        r = (std::min)(part->getSignedDistance2D(a), r);
     }
     return r;
 }

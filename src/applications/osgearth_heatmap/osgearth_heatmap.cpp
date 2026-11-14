@@ -32,6 +32,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <chrono>
 
 #include "heatmap.h"
 

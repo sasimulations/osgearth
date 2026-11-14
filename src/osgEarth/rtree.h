@@ -18,10 +18,10 @@
 
 #define ASSERT assert // RTree uses ASSERT( condition )
 #ifndef Min
-#define Min std::min
+#define Min (std::min)
 #endif //Min
 #ifndef Max
-#define Max std::max
+#define Max (std::max)
 #endif //Max
 
 //
@@ -3000,8 +3000,8 @@ typename RTREE_QUAL::Rect RTREE_QUAL::CombineRect(const Rect* a_rectA, const Rec
 
   for(int index = 0; index < NUMDIMS; ++index)
   {
-    newRect.m_min[index] = std::min(a_rectA->m_min[index], a_rectB->m_min[index]);
-    newRect.m_max[index] = std::max(a_rectA->m_max[index], a_rectB->m_max[index]);
+    newRect.m_min[index] = (std::min)(a_rectA->m_min[index], a_rectB->m_min[index]);
+    newRect.m_max[index] = (std::max)(a_rectA->m_max[index], a_rectB->m_max[index]);
   }
 
   return newRect;

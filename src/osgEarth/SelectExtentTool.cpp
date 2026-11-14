@@ -110,10 +110,10 @@ SelectExtentTool::handle( const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdap
         if (getMapNode()->getGeoPointUnderMouse(aa.asView(), ea.getX(), ea.getY(), point))
         {
             Bounds bounds(
-                std::min(_mouseDownPoint.x(), point.x()),
-                std::min(_mouseDownPoint.y(), point.y()),
-                std::max(_mouseDownPoint.x(), point.x()),
-                std::max(_mouseDownPoint.y(), point.y()));
+                (std::min)(_mouseDownPoint.x(), point.x()),
+                (std::min)(_mouseDownPoint.y(), point.y()),
+                (std::max)(_mouseDownPoint.x(), point.x()),
+                (std::max)(_mouseDownPoint.y(), point.y()));
             _extent = GeoExtent(_mapNode->getMapSRS(), bounds);
             updateFeature(_extent);
             return true;

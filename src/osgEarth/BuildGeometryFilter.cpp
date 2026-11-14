@@ -836,7 +836,7 @@ namespace
             z += geometry->at(i).z();
         z /= geometry->size();
 
-        osg::ref_ptr<Polygon> poly = new Polygon;
+        osg::ref_ptr<osgEarth::Polygon> poly = new osgEarth::Polygon;
         poly->resize( 4 );
 
         for(int x=0; x<(int)numCols; ++x)

@@ -776,7 +776,7 @@ FeatureRasterizer::render_blend2d(
                     _extent.getSRS()->getUnits(),
                     _extent.yMax());
 
-                double lineWidth_map = std::min(lineWidth_map_south, lineWidth_map_north);
+                double lineWidth_map = (std::min)(lineWidth_map_south, lineWidth_map_north);
 
                 double pixelSize_map = _extent.height() / (double)_image->t();
 

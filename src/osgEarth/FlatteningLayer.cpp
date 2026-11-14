@@ -88,7 +88,7 @@ namespace
     // This will not always work with polygons that contain holes,
     // so we need to come up with a different algorithm if this becomes a problem.
     // Maybe try a random point generator and profile it.
-    osg::Vec3d inline getInternalPoint(const Polygon* p)
+    osg::Vec3d inline getInternalPoint(const osgEarth::Polygon* p)
     {
         // Simple test: if the centroid is in the polygon, use it.
         osg::Vec3d centroid = p->getBounds().center();
@@ -156,7 +156,7 @@ namespace
         return p->getBounds().center();
     }
 
-    double getDistanceSquaredToClosestEdge(const osg::Vec3d& P, const Polygon* poly)
+    double getDistanceSquaredToClosestEdge(const osg::Vec3d& P, const osgEarth::Polygon* poly)
     {
         double Dmin = DBL_MAX;
         ConstSegmentIterator segIter(poly, true);
@@ -232,7 +232,7 @@ namespace
                 double minD2 = DBL_MAX;//bufferWidth * bufferWidth; // minimum distance(squared) to closest polygon edge
                 double bufferWidth = 0.0;
 
-                const Polygon* bestPoly = 0L;
+                const osgEarth::Polygon* bestPoly = 0L;
 
                 for (unsigned int geomIndex = 0; geomIndex < geom->getNumComponents(); geomIndex++)
                 {
@@ -241,7 +241,7 @@ namespace
                     ConstGeometryIterator giter(component, false);
                     while (giter.hasMore() && !done)
                     {
-                        const Polygon* polygon = dynamic_cast<const Polygon*>(giter.next());
+                        const osgEarth::Polygon* polygon = dynamic_cast<const osgEarth::Polygon*>(giter.next());
                         if (polygon)
                         {
                             // Does the point P fall within the polygon?

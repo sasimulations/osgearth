@@ -254,10 +254,10 @@ namespace weemesh
             tri.p0 = get_vertex(i0);
             tri.p1 = get_vertex(i1);
             tri.p2 = get_vertex(i2);
-            tri.a_min[0] = std::min(tri.p0.x(), std::min(tri.p1.x(), tri.p2.x()));
-            tri.a_min[1] = std::min(tri.p0.y(), std::min(tri.p1.y(), tri.p2.y()));
-            tri.a_max[0] = std::max(tri.p0.x(), std::max(tri.p1.x(), tri.p2.x()));
-            tri.a_max[1] = std::max(tri.p0.y(), std::max(tri.p1.y(), tri.p2.y()));
+            tri.a_min[0] = (std::min)(tri.p0.x(), (std::min)(tri.p1.x(), tri.p2.x()));
+            tri.a_min[1] = (std::min)(tri.p0.y(), (std::min)(tri.p1.y(), tri.p2.y()));
+            tri.a_max[0] = (std::max)(tri.p0.x(), (std::max)(tri.p1.x(), tri.p2.x()));
+            tri.a_max[1] = (std::max)(tri.p0.y(), (std::max)(tri.p1.y(), tri.p2.y()));
 
             // "2d_degenerate" means that either a) at least 2 points are coincident, or
             // b) at least two edges are basically coincident (in the XY plane)
@@ -367,10 +367,10 @@ namespace weemesh
             // search for possible intersecting triangles:
             vert_t::value_type a_min[2];
             vert_t::value_type a_max[2];
-            a_min[0] = std::min(seg.first.x(), seg.second.x());
-            a_min[1] = std::min(seg.first.y(), seg.second.y());
-            a_max[0] = std::max(seg.first.x(), seg.second.x());
-            a_max[1] = std::max(seg.first.y(), seg.second.y());
+            a_min[0] = (std::min)(seg.first.x(), seg.second.x());
+            a_min[1] = (std::min)(seg.first.y(), seg.second.y());
+            a_max[0] = (std::max)(seg.first.x(), seg.second.x());
+            a_max[1] = (std::max)(seg.first.y(), seg.second.y());
             std::vector<UID> uids;
 
             _spatial_index.Search(

@@ -373,7 +373,7 @@ Color::asHSL() const
     A.set(p.x(), p.y(), p.w(), r());
     B.set(r(), p.y(), p.z(), p.x());
     osg::Vec4f q = mix(A, B, step(p.x(), r()));
-    float d = q.x() - std::min(q.w(), q.y());
+    float d = q.x() - (std::min)(q.w(), q.y());
     const float e = 1.0e-10;
     return osg::Vec4f(
         fabs(q.z() + (q.w() - q.y()) / (6.0f*d + e)),

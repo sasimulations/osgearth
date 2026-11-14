@@ -964,7 +964,7 @@ double ThreeDTileNode::computeScreenSpaceError(osgUtil::CullVisitor* cv)
         const osg::Viewport* vp = cv->getCurrentCamera()->getViewport();
         double L, R, B, T, N, F;
         ProjectionMatrix::getOrtho(proj, L, R, B, T, N, F);
-        double pixelSize = std::max(T-B, R-L) / std::max(vp->width(), vp->height());
+        double pixelSize = (std::max)(T-B, R-L) / (std::max)(vp->width(), vp->height());
         return (*_tile->geometricError()) / pixelSize;
     }
 }

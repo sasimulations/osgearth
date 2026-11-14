@@ -115,7 +115,7 @@ PagedNode2::traverse(osg::NodeVisitor& nv)
 
             if (_useRange) // meters
             {
-                float range = std::max(0.0f, nv.getDistanceToViewPoint(getBound().center(), true) - getBound().radius());
+                float range = (std::max)(0.0f, nv.getDistanceToViewPoint(getBound().center(), true) - getBound().radius());
                 inRange = (range >= _minRange && range <= _maxRange);
                 priority = -range * _priorityScale;
             }
@@ -436,8 +436,8 @@ PagingManager::traverse(osg::NodeVisitor& nv)
         {
             if (entry._data.valid())
             {               
-                float range = std::max(0.0f, nv.getDistanceToViewPoint(entry._data->getBound().center(), true) - entry._data->getBound().radius());
-                entry._data->_lastRange = std::min(entry._data->_lastRange, range);
+                float range = (std::max)(0.0f, nv.getDistanceToViewPoint(entry._data->getBound().center(), true) - entry._data->getBound().radius());
+                entry._data->_lastRange = (std::min)(entry._data->_lastRange, range);
             }
         }
     }

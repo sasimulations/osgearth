@@ -932,7 +932,7 @@ ChonkDrawable::GCState::update(
             _all_instances.back().first_lod_cmd_index = first_lod_cmd_index;
         }
 
-        max_lod_count = std::max(max_lod_count, lod_commands.size());
+        max_lod_count = (std::max)(max_lod_count, lod_commands.size());
     }
 
     // set globals

@@ -1246,7 +1246,7 @@ TileNode::load(TerrainCuller* culler)
 
     // dist priority is in the range [0..1]
     float distance = culler->getDistanceToViewPoint(getBound().center(), true);
-    int nextLOD = std::max(0, lod - 1);
+    int nextLOD = (std::max)(0, lod - 1);
     float maxRange = si.getLOD(nextLOD)._visibilityRange;
     float distPriority = 1.0 - distance/maxRange;
 

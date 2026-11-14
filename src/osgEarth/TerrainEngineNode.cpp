@@ -182,7 +182,7 @@ TerrainEngineNode::computeBound() const
     if ( getMap() && getMap()->getSRS())
     {
         const Ellipsoid& e = getMap()->getSRS()->getEllipsoid();
-        double maxRad = std::max(
+        double maxRad = (std::max)(
             e.getRadiusEquator(),
             e.getRadiusPolar());
 

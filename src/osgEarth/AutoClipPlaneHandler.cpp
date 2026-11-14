@@ -180,7 +180,7 @@ _autoFarPlaneClamping( true )
         {
             // Select the minimal radius..
             const Ellipsoid& em = map->getProfile()->getSRS()->getEllipsoid();
-            _rp = std::min( em.getRadiusEquator(), em.getRadiusPolar() );
+            _rp = (std::min)( em.getRadiusEquator(), em.getRadiusPolar() );
             _rp2 = _rp*_rp;
             _active = true;
         }
@@ -193,7 +193,7 @@ _autoFarPlaneClamping( true )
     else
     {        
         Ellipsoid wgs84;
-        _rp = std::min(wgs84.getRadiusEquator(), wgs84.getRadiusPolar() );
+        _rp = (std::min)(wgs84.getRadiusEquator(), wgs84.getRadiusPolar() );
         _rp2 = _rp*_rp;
         _active = true;
     }

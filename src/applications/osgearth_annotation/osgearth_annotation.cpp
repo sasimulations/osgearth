@@ -144,7 +144,7 @@ main(int argc, char** argv)
                     traverse(n, nv);
             }
         };
-        Geometry* geom = new Polygon();
+        Geometry* geom = new osgEarth::Polygon();
         geom->push_back( osg::Vec3d(0,   40, 0) );
         geom->push_back( osg::Vec3d(-60, 40, 0) );
         geom->push_back( osg::Vec3d(-60, 60, 0) );
@@ -174,7 +174,7 @@ main(int argc, char** argv)
 
     // another rhumb box that crosses the antimeridian
     {
-        Geometry* geom = new Polygon();
+        Geometry* geom = new osgEarth::Polygon();
         geom->push_back( -160., -30. );
         geom->push_back(  150., -20. );
         geom->push_back(  160., -45. );
@@ -331,7 +331,7 @@ main(int argc, char** argv)
     // FeatureNode, where you create a geographic geometry and use it as an
     // annotation.
     {
-        Geometry* utah = new Polygon();
+        Geometry* utah = new osgEarth::Polygon();
         utah->push_back( -114.052, 37.0   );
         utah->push_back( -109.054, 37.0   );
         utah->push_back( -109.054, 41.0   );

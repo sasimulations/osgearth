@@ -296,7 +296,7 @@ ShadowCaster::traverse(osg::NodeVisitor& nv)
 
                 double fovy,ar,zn,zf;
                 ProjectionMatrix::getPerspective(proj, fovy, ar, zn, zf);
-                ProjectionMatrix::setPerspective(proj, fovy, ar, std::max(n, zn), std::min(f, zf));
+                ProjectionMatrix::setPerspective(proj, fovy, ar, (std::max)(n, zn), (std::min)(f, zf));
                 
                 // extract the corner points of the camera frustum in world space.
                 osg::Matrix MVP = MV * proj;

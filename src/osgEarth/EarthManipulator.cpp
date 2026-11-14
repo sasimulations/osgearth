@@ -797,7 +797,7 @@ EarthManipulator::established()
             Viewpoint vp;
             const Profile* profile = _mapNode->getMap()->getProfile();
             vp.focalPoint() = profile->getExtent().getCentroid();
-            vp.range()->set(2.0 * std::max(profile->getExtent().width(), profile->getExtent().height()), Units::METERS);
+            vp.range()->set(2.0 * (std::max)(profile->getExtent().width(), profile->getExtent().height()), Units::METERS);
             vp.positionOffset()->set(0, 0, 0);
             vp.heading()->set(0.0, Units::DEGREES);
             vp.pitch()->set(-90.0, Units::DEGREES);
@@ -1330,7 +1330,7 @@ void EarthManipulator::collisionDetect()
     osg::Vec3d eyeUp = getUpVector(eyeCoordFrame);
 
     // Try to intersect the terrain with a vector going straight up and down.
-    double r = std::min(_srs->getEllipsoid().getRadiusEquator(), _srs->getEllipsoid().getRadiusPolar());
+    double r = (std::min)(_srs->getEllipsoid().getRadiusEquator(), _srs->getEllipsoid().getRadiusPolar());
     osg::Vec3d ip, normal;
 
     if (intersect(eye + eyeUp * r, eye - eyeUp * r, ip, normal))

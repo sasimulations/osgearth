@@ -185,7 +185,7 @@ PolygonizeLinesOperator::operator()(
     float spineLen = 0.0f;
     float texlen = width;
     if (_line.valid() && _line->imageLength().isSet())
-        texlen = std::max(_line->imageLength().get(), 1.0f);
+        texlen = (std::max)(_line->imageLength().get(), 1.0f);
     float aspect_ratio = width / texlen;
 
     osg::Vec2Array* tverts = new osg::Vec2Array( lineSize );

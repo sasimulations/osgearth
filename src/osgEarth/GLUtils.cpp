@@ -517,7 +517,7 @@ GLObjectPool::flushDeletedGLObjects(double now, double& avail)
 
     GLsizeiptr bytes = 0;
     std::unordered_set<GLObject::Ptr> keep;
-    unsigned maxNumToRelease = std::max(1u, (unsigned)pow(4.0f, _avarice));
+    unsigned maxNumToRelease = (std::max)(1u, (unsigned)pow(4.0f, _avarice));
     unsigned numReleased = 0u;
 
     for (auto& object : _objects)

@@ -201,7 +201,7 @@ ElevationPool::refresh(const Map* map)
         // up a max level and use the layer's full extent.
         if (dataExtents.empty())
         {
-            unsigned maxLevel = std::min(layer->getMaxDataLevel(), 12u);
+            unsigned maxLevel = (std::min)(layer->getMaxDataLevel(), 12u);
 
             GeoExtent ext = layer->getExtent();
             if (!ext.isValid() && layer->getProfile())
@@ -236,7 +236,7 @@ ElevationPool::getLOD(double x, double y) const
         point, point,
         [&maxiestMaxLevel](const unsigned& level)
         {
-            maxiestMaxLevel = std::max(maxiestMaxLevel, (int)level);
+            maxiestMaxLevel = (std::max)(maxiestMaxLevel, (int)level);
             return true;
         });
 
@@ -438,15 +438,15 @@ namespace
         const double s = u * sizeS;
         const double t = v * sizeT;
 
-        const double s0 = std::max(floor(s), 0.0);
+        const double s0 = (std::max)(floor(s), 0.0);
         const int intS0 = s0;
-        const double s1 = std::min(s0 + 1.0, sizeS);
+        const double s1 = (std::min)(s0 + 1.0, sizeS);
         const int intS1 = s1;
         const double smix = s0 < s1 ? (s - s0) / (s1 - s0) : 0.0;
 
-        const double t0 = std::max(floor(t), 0.0);
+        const double t0 = (std::max)(floor(t), 0.0);
         const int intT0 = t0;
-        const double t1 = std::min(t0 + 1.0, sizeT);
+        const double t1 = (std::min)(t0 + 1.0, sizeT);
         const int intT1 = t1;
         const double tmix = t0 < t1 ? (t - t0) / (t1 - t0) : 0.0;
 
@@ -686,7 +686,7 @@ ElevationPool::sampleMapCoords(
                     resolutionInMapUnits,
                     ELEVATION_TILE_SIZE);
 
-                lod = std::min( getLOD(p.x(), p.y()), (int)maxLOD );
+                lod = (std::min)( getLOD(p.x(), p.y()), (int)maxLOD );
                 if (lod < 0)
                 {
                     p.z() = failValue;
@@ -925,10 +925,10 @@ ElevationPool::getSample(
     Internal::RevElevationKey key;
 
     // Need to limit maxLOD <= INT_MAX else std::min for lod will return -1 due to cast
-    maxLOD = std::min(maxLOD, static_cast<unsigned>(std::numeric_limits<int>::max()));
+    maxLOD = maxLOD > static_cast<unsigned>(INT_MAX) ? static_cast<unsigned>(INT_MAX) : maxLOD;
 
     // returns the best LOD for the given point, or -1 if there is no data there
-    int lod = std::min( getLOD(p.x(), p.y()), (int)maxLOD );
+    int lod = (std::min)( getLOD(p.x(), p.y()), (int)maxLOD );
 
     if (lod >= 0)
     {

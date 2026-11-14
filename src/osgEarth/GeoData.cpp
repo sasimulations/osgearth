@@ -823,9 +823,9 @@ GeoExtent::set(double west, double south, double east, double north)
         while (east < west)
             east += 360.0;
     }
-    width = std::max(0.0, east - west);
+    width = (std::max)(0.0, east - west);
 
-    height = std::max(0.0, north - south);
+    height = (std::max)(0.0, north - south);
 
     setOriginAndSize(west, south, width, height);
 }
@@ -874,7 +874,7 @@ GeoExtent::width(const Units& units) const
         double m_per_deg = 2.0 * getSRS()->getEllipsoid().getRadiusEquator() * osg::PI / 360.0;
         double d0 = m_per_deg * fabs(cos(yMin())) * width();
         double d1 = m_per_deg * fabs(cos(yMax())) * height();
-        return Distance(std::max(d0, d1), Units::METERS).as(units);
+        return Distance((std::max)(d0, d1), Units::METERS).as(units);
     }
 }
 

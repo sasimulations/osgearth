@@ -85,7 +85,7 @@ namespace
         double outerRadius,
         bool genTexCoords)
     {
-        double hae = outerRadius - std::max(
+        double hae = outerRadius - (std::max)(
             ellipsoid.getRadiusEquator(),
             ellipsoid.getRadiusPolar());
 
@@ -255,7 +255,7 @@ SimpleSkyNode::construct()
     // set up the astronomical parameters:
     osg::ref_ptr<const SpatialReference> wgs84 = SpatialReference::get("wgs84");
     _ellipsoid = wgs84->getEllipsoid();
-    _innerRadius = std::min(
+    _innerRadius = (std::min)(
         _ellipsoid.getRadiusPolar(),
         _ellipsoid.getRadiusEquator() );
 

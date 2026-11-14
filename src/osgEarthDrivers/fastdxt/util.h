@@ -32,7 +32,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#if !defined(WIN32)
+#if !defined(_WIN32)
 #include <unistd.h>
 #include <sys/time.h>
 #else

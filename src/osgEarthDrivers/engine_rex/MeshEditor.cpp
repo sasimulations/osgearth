@@ -131,9 +131,9 @@ MeshEditor::createTileMesh(
     locator.unitToWorld(osg::Vec3d(1, 1, 0), c[3]);
     for (int i = 0; i < 4; ++i) {
         c[i] = c[i] * world2local;
-        xmin = std::min(xmin, c[i].x()), xmax = std::max(xmax, c[i].x());
-        ymin = std::min(ymin, c[i].y()), ymax = std::max(ymax, c[i].y());
-        zmin = std::min(zmin, c[i].z());
+        xmin = (std::min)(xmin, c[i].x()), xmax = (std::max)(xmax, c[i].x());
+        ymin = (std::min)(ymin, c[i].y()), ymax = (std::max)(ymax, c[i].y());
+        zmin = (std::min)(zmin, c[i].z());
     }
 
     mesh_t mesh;

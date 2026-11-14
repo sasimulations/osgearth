@@ -616,8 +616,8 @@ bool Feature::getWorldBoundingPolytope( const osg::BoundingSphered& bs, const Sp
             const Ellipsoid& e = srs->getEllipsoid();
 
             // add a bottom cap, unless the bounds are sufficiently large.
-            double minRad = std::min(e.getRadiusPolar(), e.getRadiusEquator());
-            double maxRad = std::max(e.getRadiusPolar(), e.getRadiusEquator());
+            double minRad = (std::min)(e.getRadiusPolar(), e.getRadiusEquator());
+            double maxRad = (std::max)(e.getRadiusPolar(), e.getRadiusEquator());
             double zeroOffset = bs.center().length();
             if ( zeroOffset > minRad * 0.1 )
             {

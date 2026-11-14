@@ -347,7 +347,7 @@ ModelLayer::openImplementation()
 
                 if (result.valid())
                 {
-                    plod->setRadius(std::max(result->getBound().radius(), maxRange));
+                    plod->setRadius((std::max)(result->getBound().radius(), maxRange));
                 }
                 else
                 {

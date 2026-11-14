@@ -792,17 +792,17 @@ TileLayer::getDataExtentsUnion() const
                     _dataExtentsUnion.expandToInclude(de[i]);
 
                     if (de[i].minLevel().isSet())
-                        _dataExtentsUnion.minLevel() = std::min(_dataExtentsUnion.minLevel().get(), de[i].minLevel().get());
+                        _dataExtentsUnion.minLevel() = (std::min)(_dataExtentsUnion.minLevel().get(), de[i].minLevel().get());
 
                     if (de[i].maxLevel().isSet())
-                        _dataExtentsUnion.maxLevel() = std::max(_dataExtentsUnion.maxLevel().get(), de[i].maxLevel().get());
+                        _dataExtentsUnion.maxLevel() = (std::max)(_dataExtentsUnion.maxLevel().get(), de[i].maxLevel().get());
                 }
 
                 // if upsampling is enabled include the MDL in the union.
                 if (options().maxDataLevel().isSet() &&
                     getUpsample())
                 {
-                    _dataExtentsUnion.maxLevel() = std::max(_dataExtentsUnion.maxLevel().get(), options().maxDataLevel().get());
+                    _dataExtentsUnion.maxLevel() = (std::max)(_dataExtentsUnion.maxLevel().get(), options().maxDataLevel().get());
                 }
             }
         }
@@ -958,14 +958,14 @@ TileLayer::getBestAvailableTileKey(
         if (considerUpsampling && (getUpsample() == true))
         {
             // for a normal dataset, MDL takes priority.
-            unsigned maxAvailableLOD = std::max(highestLOD, MDL);
-            return key.createAncestorKey(std::min(key.getLOD(), maxAvailableLOD));
+            unsigned maxAvailableLOD = (std::max)(highestLOD, MDL);
+            return key.createAncestorKey((std::min)(key.getLOD(), maxAvailableLOD));
         }
         else
         {
             // for a normal dataset, dataset max takes priority over MDL.
-            unsigned maxAvailableLOD = std::min(highestLOD, MDL);
-            return key.createAncestorKey(std::min(key.getLOD(), maxAvailableLOD));
+            unsigned maxAvailableLOD = (std::min)(highestLOD, MDL);
+            return key.createAncestorKey((std::min)(key.getLOD(), maxAvailableLOD));
         }
     }
 

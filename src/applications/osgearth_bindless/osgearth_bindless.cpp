@@ -116,7 +116,7 @@ int main_NV(int argc, char** argv)
         chonks.push_back(chonk);
 
         float radius = chonk->getBound().radius();
-        spacing = std::max(spacing, radius*2.01f);
+        spacing = (std::max)(spacing, radius*2.01f);
     }
 
     if (chonks.empty())

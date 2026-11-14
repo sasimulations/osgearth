@@ -255,7 +255,7 @@ Texture1D::Texture1D(uint32_t w, uint32_t array_size, int32_t mip_levels, GLenum
 
         while (width > 1)
         {
-            width = std::max(1, (width / 2));
+            width = (std::max)(1, (width / 2));
             m_mip_levels++;
         }
     }
@@ -274,7 +274,7 @@ Texture1D::Texture1D(uint32_t w, uint32_t array_size, int32_t mip_levels, GLenum
         for (int i = 0; i < m_mip_levels; i++)
         {
             GL_CHECK_ERROR(glTexImage2D(m_target, i, m_internal_format, width, m_array_size, 0, m_format, m_type, NULL));
-            width = std::max(1, (width / 2));
+            width = (std::max)(1, (width / 2));
         }
 
         GL_CHECK_ERROR(glBindTexture(m_target, 0));
@@ -290,7 +290,7 @@ Texture1D::Texture1D(uint32_t w, uint32_t array_size, int32_t mip_levels, GLenum
         for (int i = 0; i < m_mip_levels; i++)
         {
             GL_CHECK_ERROR(glTexImage1D(m_target, i, m_internal_format, width, 0, m_format, m_type, NULL));
-            width = std::max(1, (width / 2));
+            width = (std::max)(1, (width / 2));
         }
 
         GL_CHECK_ERROR(glBindTexture(m_target, 0));
@@ -313,7 +313,7 @@ void Texture1D::set_data(int array_index, int mip_level, void* data)
     int width = m_width;
 
     for (int i = 0; i < mip_level; i++)
-        width = std::max(1, width / 2);
+        width = (std::max)(1, width / 2);
 
     GL_CHECK_ERROR(glBindTexture(m_target, m_gl_tex));
 
@@ -424,8 +424,8 @@ Texture2D::Texture2D(uint32_t w, uint32_t h, uint32_t array_size, int32_t mip_le
 
         while (width > 1 && height > 1)
         {
-            width = std::max(1, (width / 2));
-            height = std::max(1, (height / 2));
+            width = (std::max)(1, (width / 2));
+            height = (std::max)(1, (height / 2));
             m_mip_levels++;
         }
     }
@@ -470,8 +470,8 @@ Texture2D::Texture2D(uint32_t w, uint32_t h, uint32_t array_size, int32_t mip_le
             {
                 GL_CHECK_ERROR(ext()->glTexImage3D(m_target, i, m_internal_format, width, height, m_array_size, 0, m_format, m_type, NULL));
 
-                width = std::max(1, (width / 2));
-                height = std::max(1, (height / 2));
+                width = (std::max)(1, (width / 2));
+                height = (std::max)(1, (height / 2));
             }
         }
 
@@ -507,8 +507,8 @@ Texture2D::Texture2D(uint32_t w, uint32_t h, uint32_t array_size, int32_t mip_le
             {
                 GL_CHECK_ERROR(glTexImage2D(m_target, i, m_internal_format, width, height, 0, m_format, m_type, NULL));
 
-                width = std::max(1, (width / 2));
-                height = std::max(1, (height / 2));
+                width = (std::max)(1, (width / 2));
+                height = (std::max)(1, (height / 2));
             }
         }
 
@@ -540,8 +540,8 @@ void Texture2D::set_data(int array_index, int mip_level, void* data)
 
         for (int i = 0; i < mip_level; i++)
         {
-            width = std::max(1, width / 2);
-            height = std::max(1, (height / 2));
+            width = (std::max)(1, width / 2);
+            height = (std::max)(1, (height / 2));
         }
 
         GL_CHECK_ERROR(glBindTexture(m_target, m_gl_tex));
@@ -610,9 +610,9 @@ Texture3D::Texture3D(uint32_t w, uint32_t h, uint32_t d, int mip_levels, GLenum 
 
         while (width > 1 && height > 1 && depth > 1)
         {
-            width = std::max(1, (width / 2));
-            height = std::max(1, (height / 2));
-            depth = std::max(1, (depth / 2));
+            width = (std::max)(1, (width / 2));
+            height = (std::max)(1, (height / 2));
+            depth = (std::max)(1, (depth / 2));
             m_mip_levels++;
         }
     }
@@ -631,9 +631,9 @@ Texture3D::Texture3D(uint32_t w, uint32_t h, uint32_t d, int mip_levels, GLenum 
     for (int i = 0; i < m_mip_levels; i++)
     {
         GL_CHECK_ERROR(ext()->glTexImage3D(m_target, i, m_internal_format, width, height, depth, 0, m_format, m_type, NULL));
-        width = std::max(1, (width / 2));
-        height = std::max(1, (height / 2));
-        depth = std::max(1, (depth / 2));
+        width = (std::max)(1, (width / 2));
+        height = (std::max)(1, (height / 2));
+        depth = (std::max)(1, (depth / 2));
     }
 
     GL_CHECK_ERROR(glBindTexture(m_target, 0));
@@ -658,9 +658,9 @@ void Texture3D::set_data(int mip_level, void* data)
 
     for (int i = 0; i < mip_level; i++)
     {
-        width = std::max(1, width / 2);
-        height = std::max(1, (height / 2));
-        depth = std::max(1, (depth / 2));
+        width = (std::max)(1, width / 2);
+        height = (std::max)(1, (height / 2));
+        depth = (std::max)(1, (depth / 2));
     }
 
     GL_CHECK_ERROR(glBindTexture(m_target, m_gl_tex));
@@ -803,8 +803,8 @@ TextureCube::TextureCube(uint32_t w, uint32_t h, uint32_t array_size, int32_t mi
 
         while (width > 1 && height > 1)
         {
-            width = std::max(1, (width / 2));
-            height = std::max(1, (height / 2));
+            width = (std::max)(1, (width / 2));
+            height = (std::max)(1, (height / 2));
             m_mip_levels++;
         }
     }
@@ -825,8 +825,8 @@ TextureCube::TextureCube(uint32_t w, uint32_t h, uint32_t array_size, int32_t mi
         for (int i = 0; i < m_mip_levels; i++)
         {
             GL_CHECK_ERROR(ext()->glTexImage3D(m_target, i, m_internal_format, width, height, m_array_size * 6, 0, m_format, m_type, NULL));
-            width = std::max(1, (width / 2));
-            height = std::max(1, (height / 2));
+            width = (std::max)(1, (width / 2));
+            height = (std::max)(1, (height / 2));
         }
 
         GL_CHECK_ERROR(glBindTexture(m_target, 0));
@@ -873,8 +873,8 @@ void TextureCube::set_data(int face_index, int layer_index, int mip_level, void*
 
     for (int i = 0; i < mip_level; i++)
     {
-        width = std::max(1, (width / 2));
-        height = std::max(1, (height / 2));
+        width = (std::max)(1, (width / 2));
+        height = (std::max)(1, (height / 2));
     }
 
 #if !defined(__EMSCRIPTEN__)

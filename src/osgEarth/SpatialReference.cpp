@@ -1310,10 +1310,10 @@ SpatialReference::transformExtentToMBR(
         // enforce an MBR:
         for (unsigned int i = 0; i < v.size(); i++)
         {
-            in_out_xmin = std::min( v[i].x(), in_out_xmin );
-            in_out_ymin = std::min( v[i].y(), in_out_ymin );
-            in_out_xmax = std::max( v[i].x(), in_out_xmax );
-            in_out_ymax = std::max( v[i].y(), in_out_ymax );
+            in_out_xmin = (std::min)( v[i].x(), in_out_xmin );
+            in_out_ymin = (std::min)( v[i].y(), in_out_ymin );
+            in_out_xmax = (std::max)( v[i].x(), in_out_xmax );
+            in_out_ymax = (std::max)( v[i].y(), in_out_ymax );
         }
 
         // obe?

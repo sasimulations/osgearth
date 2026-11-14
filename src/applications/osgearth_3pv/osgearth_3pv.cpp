@@ -136,32 +136,32 @@ void
 updateFrustumGeometry(osg::Node* node, const osg::Matrix& modelview, const osg::Matrix& proj)
 {
     // Get near and far from the Projection matrix.
-    const double near = proj(3,2) / (proj(2,2)-1.0);
-    const double far = proj(3,2) / (1.0+proj(2,2));
+    const double nearPlane = proj(3,2) / (proj(2,2)-1.0);
+    const double farPlane = proj(3,2) / (1.0+proj(2,2));
 
     // Get the sides of the near plane.
-    const double nLeft = near * (proj(2,0)-1.0) / proj(0,0);
-    const double nRight = near * (1.0+proj(2,0)) / proj(0,0);
-    const double nTop = near * (1.0+proj(2,1)) / proj(1,1);
-    const double nBottom = near * (proj(2,1)-1.0) / proj(1,1);
+    const double nLeft = nearPlane * (proj(2,0)-1.0) / proj(0,0);
+    const double nRight = nearPlane * (1.0+proj(2,0)) / proj(0,0);
+    const double nTop = nearPlane * (1.0+proj(2,1)) / proj(1,1);
+    const double nBottom = nearPlane * (proj(2,1)-1.0) / proj(1,1);
 
     // Get the sides of the far plane.
-    const double fLeft = far * (proj(2,0)-1.0) / proj(0,0);
-    const double fRight = far * (1.0+proj(2,0)) / proj(0,0);
-    const double fTop = far * (1.0+proj(2,1)) / proj(1,1);
-    const double fBottom = far * (proj(2,1)-1.0) / proj(1,1);
+    const double fLeft = farPlane * (proj(2,0)-1.0) / proj(0,0);
+    const double fRight = farPlane * (1.0+proj(2,0)) / proj(0,0);
+    const double fTop = farPlane * (1.0+proj(2,1)) / proj(1,1);
+    const double fBottom = farPlane * (proj(2,1)-1.0) / proj(1,1);
 
     LineDrawable* geom = static_cast<LineDrawable*>(node->getUserData());
 
     osg::Vec3
-        LBN(nLeft, nBottom, -near),
-        RBN(nRight, nBottom, -near),
-        RTN(nRight, nTop, -near),
-        LTN(nLeft, nTop, -near),
-        LBF(fLeft, fBottom, -far),
-        RBF(fRight, fBottom, -far),
-        RTF(fRight, fTop, -far),
-        LTF(fLeft, fTop, -far),
+        LBN(nLeft, nBottom, -nearPlane),
+        RBN(nRight, nBottom, -nearPlane),
+        RTN(nRight, nTop, -nearPlane),
+        LTN(nLeft, nTop, -nearPlane),
+        LBF(fLeft, fBottom, -farPlane),
+        RBF(fRight, fBottom, -farPlane),
+        RTF(fRight, fTop, -farPlane),
+        LTF(fLeft, fTop, -farPlane),
         EYE(0,0,0);
 
     int i=0;

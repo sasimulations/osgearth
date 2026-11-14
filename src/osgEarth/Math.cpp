@@ -383,10 +383,10 @@ osgEarth::polygonBBox2d(const osg::Vec3dArray& points)
     osg::BoundingBoxd result(DBL_MAX, DBL_MAX, DBL_MAX, -DBL_MAX, -DBL_MAX, -DBL_MAX);
     for (osg::Vec3dArray::const_iterator itr = points.begin(); itr != points.end(); ++itr)
     {
-        result.xMin() = std::min(result.xMin(), itr->x());
-        result.xMax() = std::max(result.xMax(), itr->x());
-        result.yMin() = std::min(result.yMin(), itr->y());
-        result.yMax() = std::max(result.yMax(), itr->y());
+        result.xMin() = (std::min)(result.xMin(), itr->x());
+        result.xMax() = (std::max)(result.xMax(), itr->x());
+        result.yMin() = (std::min)(result.yMin(), itr->y());
+        result.yMax() = (std::max)(result.yMax(), itr->y());
     }
     return result;
 }

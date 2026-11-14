@@ -537,8 +537,8 @@ osgEarth::Util::ciEquals(const std::string& lhs, const std::string& rhs, const s
     return true;
 }
 
-#if defined(WIN32) && !defined(__CYGWIN__)
-#  define STRICMP ::stricmp
+#if defined(_WIN32) && !defined(__CYGWIN__)
+#  define STRICMP ::_stricmp
 #else
 #  define STRICMP ::strcasecmp
 #endif

@@ -96,13 +96,13 @@ namespace
         {
             double l, r, b, t, n, f;
             ProjectionMatrix::getOrtho(m, l, r, b, t, n, f);
-            ProjectionMatrix::setOrtho(m, l, r, b, t, std::max(n, newNear), std::min(f, newFar));
+            ProjectionMatrix::setOrtho(m, l, r, b, t, (std::max)(n, newNear), (std::min)(f, newFar));
         }
         else
         {
             double v,a,n,f;
             ProjectionMatrix::getPerspective(m, v, a, n, f);
-            ProjectionMatrix::setPerspective(m, v, a, std::max(n, newNear), std::min(f, newFar));
+            ProjectionMatrix::setPerspective(m, v, a, (std::max)(n, newNear), (std::min)(f, newFar));
         }
     }
 
